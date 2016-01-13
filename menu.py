@@ -12,6 +12,6 @@ print("---------------")
 
 sab = Light.Saber()
 command = input("Command:")
-if "blink" in command:
+if command == "blink":
     sab.blink
 
