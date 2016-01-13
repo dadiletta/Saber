@@ -11,7 +11,7 @@ print("-----Saber-----")
 print("---------------")
 
 sab = Light.Saber()
-command = input("Command:")
+command = raw_input('Your command:')
 if command == "blink":
     sab.blink
 
