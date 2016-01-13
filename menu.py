@@ -9,9 +9,12 @@ print("----Welcome----")
 print("------to-------")
 print("-----Saber-----")
 print("---------------")
-
 sab = Light.Saber()
-command = raw_input('Your command:')
-if command == "blink":
-    sab.blink
+
+while(True):
+
+    command = raw_input('Your command:')
+
+    if command == "blink":
+        sab.blink
 
