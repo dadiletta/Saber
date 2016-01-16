@@ -10,10 +10,12 @@ print("-----Saber-----")
 print("---------------")
 sab = Light.Saber()
 
-while(True):
+while True:
 
     command = raw_input('Your command:')
 
     if command == "blink":
         sab.blink()
-
+    elif command == "dist":
+        sab.distance()
+        
