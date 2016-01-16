@@ -20,4 +20,4 @@ while True:
         sab.distance()
     elif command == "watch":
         sab.proxAlert()
-        
+

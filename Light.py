@@ -47,7 +47,7 @@ class Saber:
         counter = 0
         while True:
             try:
-                dist = print (grovepi.ultrasonicRead(ultrasonic_ranger))
+                dist = grovepi.ultrasonicRead(ultrasonic_ranger)
                 print "I think I see something " + str(dist) + " cm away."
                 counter +=1
                 if counter % 50 == 0 and dist > 500:
