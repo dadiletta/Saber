@@ -34,11 +34,39 @@ class Saber:
 
     def distance(self):
         while True:
-                try:
-                    # Read distance value from Ultrasonic
-                    print (grovepi.ultrasonicRead(ultrasonic_ranger))
+            try:
+                # Read distance value from Ultrasonic
+                print (grovepi.ultrasonicRead(ultrasonic_ranger))
 
-                except TypeError:
-                    print ("Error")
-                except IOError:
-                    print ("Error")
+            except TypeError:
+                print ("Error")
+            except IOError:
+                print ("Error")
+
+    def proxAlert(self):
+        counter = 0
+        while True:
+            try:
+                dist = print (grovepi.ultrasonicRead(ultrasonic_ranger))
+                print "I think I see something " + str(dist) + " cm away."
+                counter +=1
+                if counter % 50 == 0 and dist > 500:
+                    print "I can't really see that far away."
+                elif dist < 50:
+                    for x in range(5):
+                        try:
+                            #Blink the LED
+                            digitalWrite(led,1)		# Send HIGH to switch on LED
+                            print "Wow!"
+                            time.sleep(1)
+
+                            digitalWrite(led,0)		# Send LOW to switch off LED
+                            print "Something's close"
+                            time.sleep(1)
+
+                        except IOError:				# Print "Error" if communication error encountered
+                            print ("Error")
+            except TypeError:
+                print ("Error")
+            except IOError:
+                print ("Error")

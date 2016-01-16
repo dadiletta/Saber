@@ -18,3 +18,6 @@ while True:
         sab.blink()
     elif command == "dist":
         sab.distance()
+    elif command == "watch":
+        sab.proxAlert()
+        
