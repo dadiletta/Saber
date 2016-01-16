@@ -1,5 +1,4 @@
 import Light
-import grovepi
 
 __author__ = 'adilettad'
 
@@ -16,5 +15,5 @@ while(True):
     command = raw_input('Your command:')
 
     if command == "blink":
-        sab.blink
+        sab.blink()
 
