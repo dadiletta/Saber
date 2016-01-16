@@ -18,4 +18,3 @@ while True:
         sab.blink()
     elif command == "dist":
         sab.distance()
-        
