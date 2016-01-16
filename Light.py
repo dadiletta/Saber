@@ -53,19 +53,18 @@ class Saber:
                 if counter % 50 == 0 and dist > 500:
                     print "I can't really see that far away."
                 elif dist < 50:
-                    for x in range(5):
-                        try:
-                            #Blink the LED
-                            digitalWrite(led,1)		# Send HIGH to switch on LED
-                            print "Wow!"
-                            time.sleep(1)
+                    try:
+                        #Blink the LED
+                        digitalWrite(led,1)		# Send HIGH to switch on LED
+                        print "Wow!"
+                        time.sleep(1)
 
-                            digitalWrite(led,0)		# Send LOW to switch off LED
-                            print "Something's close"
-                            time.sleep(1)
+                        digitalWrite(led,0)		# Send LOW to switch off LED
+                        print "Something's close"
+                        time.sleep(1)
 
-                        except IOError:				# Print "Error" if communication error encountered
-                            print ("Error")
+                    except IOError:				# Print "Error" if communication error encountered
+                        print ("Error")
             except TypeError:
                 print ("Error")
             except IOError:
