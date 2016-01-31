@@ -1,6 +1,6 @@
 from grovepi import *
 import grovepi
-import web
+#import web
 
 
 # Connect the Grove LED to digital port D4
