@@ -61,7 +61,7 @@ grove_vcc = 5
 full_angle = 300
 
 #This is how I'm trying to safely include my IFTTT key to the Maker channel
-MAKER_SECRET = Private.MAKER_SECRET
+MAKER_SECRET = Private.Private.MAKER_SECRET
 
 
 ########################
