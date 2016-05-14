@@ -160,7 +160,7 @@ class Saber:
                 break
             except IOError:				# Print "Error" if communication error encountered
                 print ("Error")
-            ]except KeyboardInterrupt:
+            except KeyboardInterrupt:
                 digitalWrite(rled,0)
                 digitalWrite(gled,0)
                 break
