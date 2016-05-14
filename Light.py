@@ -221,7 +221,10 @@ class Saber:
     #Maker channel demo
     ############                  
     def demoMaker(self):
-        payload = "{ 'value1' : 'hello', 'value2' : 'hello', 'value3' : 'hello'}" requests.post("https://maker.ifttt.com/trigger/demoMaker/with/key/"+MAKER_SECRET, data=payload)
+        
+        print("Sending dark mode trigger.")
+        payload = "{ 'value1' : 'hello', 'value2' : 'hello', 'value3' : 'hello'}" 
+        requests.post("https://maker.ifttt.com/trigger/demoMaker/with/key/"+MAKER_SECRET, data=payload)
         
     ######################
     ######################
