@@ -34,6 +34,9 @@ while True:
         sab.clear()
     elif command =="maker":
         sab.demoMaker()
+    elif command =="menu":
+        exampleMenu = ["One", "Two", "Three", "Four", "Five"]
+        print(sab.formMenu(exampleMenu)+1)
 
     ##Need Ctrl+C protection on all methods
 

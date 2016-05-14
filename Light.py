@@ -94,6 +94,40 @@ class Saber:
         setRGB(0,255,0)
         setText("Bye bye, this should wrap")
         
+    
+    def formMenu(self, items):
+        
+        #sensor_value # - 0 - 1022
+        numItems = items.len
+        setText(items)
+        setRGB(0,128,64)
+
+        while True:
+            try:
+                # Read sensor value from potentiometer
+                sensor_value = grovepi.analogRead(potentiometer)
+                
+                # Calculate voltage
+                voltage = round((float)(sensor_value) * adc_ref / 1023, 2)
+        
+                # Calculate rotation in degrees (0 to 300)
+                degrees = round((voltage * full_angle) / grove_vcc, 2)
+        
+                # Calculate LED brightess (0 to 255) from degrees (0 to 300)
+                brightness = int(degrees / full_angle * 255)
+        
+                # Give PWM output to LED
+                grovepi.analogWrite(gled,brightness)
+        
+                print("sensor_value = %d voltage = %.2f degrees = %.1f brightness = %d" %(sensor_value, voltage, degrees, brightness))
+            except KeyboardInterrupt:
+                grovepi.analogWrite(gled,0)
+                break
+            except IOError:
+                print ("Error")
+
+
+        
     ############
     #Temp demo
     ############
