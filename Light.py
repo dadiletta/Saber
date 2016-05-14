@@ -135,7 +135,7 @@ class Saber:
         
             except IOError:
                 print ("Error")
-           except KeyboardInterrupt:
+            except KeyboardInterrupt:
                 break
 
     ############
