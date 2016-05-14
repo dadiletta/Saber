@@ -144,11 +144,13 @@ class Saber:
             try:
                 #Blink the LED
                 digitalWrite(gled,1)		# Send HIGH to switch on LED
-                print "LED ON!"
+                print "Green ON!"
+                digitalWrite(rled,0)
                 time.sleep(1)
 
                 digitalWrite(gled,0)		# Send LOW to switch off LED
-                print "LED OFF!"
+                digitalWrite(rled,1)
+                print "Green OFF!"
                 time.sleep(1)
 
             except KeyboardInterrupt:	# Turn LED off before stopping
@@ -171,7 +173,33 @@ class Saber:
             except IOError:
                 print ("Error")
 
-    
+    ############
+    #Knob demo
+    ############  
+    def demoKnob(self):
+        while True:
+            try:
+                # Read sensor value from potentiometer
+                sensor_value = grovepi.analogRead(potentiometer)
+        
+                # Calculate voltage
+                voltage = round((float)(sensor_value) * adc_ref / 1023, 2)
+        
+                # Calculate rotation in degrees (0 to 300)
+                degrees = round((voltage * full_angle) / grove_vcc, 2)
+        
+                # Calculate LED brightess (0 to 255) from degrees (0 to 300)
+                brightness = int(degrees / full_angle * 255)
+        
+                # Give PWM output to LED
+                grovepi.analogWrite(led,brightness)
+        
+                print("sensor_value = %d voltage = %.2f degrees = %.1f brightness = %d" %(sensor_value, voltage, degrees, brightness))
+            except KeyboardInterrupt:
+                grovepi.analogWrite(led,0)
+                break
+            except IOError:
+                print ("Error")
     ######################
     ######################
     ### LOGIC
@@ -189,19 +217,21 @@ class Saber:
         while True:
             try:
                 dist = grovepi.ultrasonicRead(ultrasonic_ranger)
-                print "I think I see something " + str(dist) + " cm away."
+                print "DIST: " + str(dist) + " cm away."
                 counter +=1
                 if counter % 50 == 0 and dist > 500:
-                    print "I can't really see that far away."
-                elif dist < 50:
+                    print "My cover is just sitting open, isn't it?"
+                elif dist > 50:
                     try:
                         #Blink the LED
                         digitalWrite(rled,1)		# Send HIGH to switch on LED
-                        print "Wow!"
+                        digitalWrite(buzzer,1)
+                        print "Hey!"
                         time.sleep(1)
 
                         digitalWrite(rled,0)		# Send LOW to switch off LED
-                        print "Something's close"
+                        digitalWrite(buzzer,0)
+                        print "Close the lid."
                         time.sleep(1)
 
                     except IOError:				# Print "Error" if communication error encountered
