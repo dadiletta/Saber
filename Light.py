@@ -248,6 +248,10 @@ class Saber:
                 print ("Error")
             except IOError:
                 print ("Error")
+            except KeyboardInterrupt:
+                digitalWrite(rled,0)
+                digitalWrite(buzzer,0)
+                break
         
     def clear(self):
         digitalWrite(rled,0)
