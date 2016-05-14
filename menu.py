@@ -32,6 +32,8 @@ while True:
         sab.demoButton()
     elif command =="clear":
         sab.clear()
+    elif command =="maker":
+        sab.demoMaker()
 
     ##Need Ctrl+C protection on all methods
 

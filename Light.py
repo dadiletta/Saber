@@ -25,6 +25,9 @@ from grovepi import *
 from grove_rgb_lcd import *
 import grovepi
 import time
+import requests
+import Private
+
 
 
 # Configure buzzer on D4
@@ -56,6 +59,10 @@ adc_ref = 5
 grove_vcc = 5
 ### Full value of the rotary angle is 300 degrees, as per it's specs (0 to 300)
 full_angle = 300
+
+#This is how I'm trying to safely include my IFTTT key to the Maker channel
+MAKER_SECRET = Private.MAKER_SECRET
+
 
 ########################
 ##WELCOME TO SABER CLASS
@@ -208,6 +215,14 @@ class Saber:
                 break
             except IOError:
                 print ("Error")
+                
+                
+    ############
+    #Maker channel demo
+    ############                  
+    def demoMaker(self):
+        payload = "{ 'value1' : 'hello', 'value2' : 'hello', 'value3' : 'hello'}" requests.post("https://maker.ifttt.com/trigger/demoMaker/with/key/"+MAKER_SECRET, data=payload)
+        
     ######################
     ######################
     ### LOGIC
