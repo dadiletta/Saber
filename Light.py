@@ -135,6 +135,8 @@ class Saber:
         
             except IOError:
                 print ("Error")
+           except KeyboardInterrupt:
+                break
 
     ############
     #LED demo
@@ -158,6 +160,10 @@ class Saber:
                 break
             except IOError:				# Print "Error" if communication error encountered
                 print ("Error")
+            ]except KeyboardInterrupt:
+                digitalWrite(rled,0)
+                digitalWrite(gled,0)
+                break
 
     ############
     #US_Range demo
@@ -172,6 +178,8 @@ class Saber:
                 print ("Error")
             except IOError:
                 print ("Error")
+            except KeyboardInterrupt:
+                break
 
     ############
     #Knob demo
@@ -240,3 +248,12 @@ class Saber:
                 print ("Error")
             except IOError:
                 print ("Error")
+        
+        def clear(self):
+            digitalWrite(rled,0)
+            digitalWrite(buzzer,0)
+            digitalWrite(gled,0)
+            
+            setText("")
+            setRGB(0,0,0)
+            

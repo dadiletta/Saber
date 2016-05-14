@@ -18,7 +18,7 @@ while True:
         sab.demoLED()
     elif command == "dist" or command == "range":
         sab.demoRange()
-    elif command == "watch":
+    elif command == "watch" or command == "cover":
         sab.coverCheck()
     elif command =="knob":
         sab.demoKnob()
@@ -30,5 +30,8 @@ while True:
         sab.demoBuzzer()
     elif command =="button":
         sab.demoButton()
+    elif command =="clear":
+        sab.clear()
 
+    ##Need Ctrl+C protection on all methods
 
