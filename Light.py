@@ -249,11 +249,11 @@ class Saber:
             except IOError:
                 print ("Error")
         
-        def clear(self):
-            digitalWrite(rled,0)
-            digitalWrite(buzzer,0)
-            digitalWrite(gled,0)
-            
-            setText("")
-            setRGB(0,0,0)
+    def clear(self):
+        digitalWrite(rled,0)
+        digitalWrite(buzzer,0)
+        digitalWrite(gled,0)
+        
+        setText("")
+        setRGB(0,0,0)
             
