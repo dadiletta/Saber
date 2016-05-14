@@ -105,7 +105,7 @@ class Saber:
             try:
                 # Read sensor value from potentiometer
                 sensor_value = grovepi.analogRead(potentiometer)
-                setText(item[int(sensor_value/len(items))])
+                setText(items[int(sensor_value/len(items))])
                 color = int((sensor_value*255)/1022)
                 setRGB(color,color,color)
                 
