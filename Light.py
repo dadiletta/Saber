@@ -99,10 +99,7 @@ class Saber:
     #Menu display and selection
     ############     
     def formMenu(self, items):
-        ## 0,1,2,3,4 (5)
-        # 0 - 25 - 50 - 75 - 100
         itemRange = int(1000/len(items))
-
         while True:
             try:
                 # Read sensor value from potentiometer
@@ -111,7 +108,7 @@ class Saber:
                 if selection >= len(items):
                     selection = len(items) - 1
                 setText(items[selection])
-                colorSelect(selection)
+                self.colorSelect(selection)
                 
                 if grovepi.digitalRead(button) == 1:
                     return selection
