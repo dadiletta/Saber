@@ -37,6 +37,8 @@ while True:
     elif command =="menu":
         exampleMenu = ["One", "Two", "Three", "Four", "Five"]
         print(sab.formMenu(exampleMenu)+1)
+    elif command =="nav":
+        sab.rootMenu()
 
     ##Need Ctrl+C protection on all methods
 
