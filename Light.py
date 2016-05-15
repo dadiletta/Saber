@@ -27,6 +27,7 @@ import grovepi
 import time
 import requests
 import Private
+import random
 
 
 
@@ -94,29 +95,47 @@ class Saber:
         setRGB(0,255,0)
         setText("Bye bye, this should wrap")
         
-    
+    ############
+    #Menu display and selection
+    ############     
     def formMenu(self, items):
-        
-        #sensor_value # - 0 - 1022
-
-        itemRange = 1022/len(items)
+        ## 0,1,2,3,4 (5)
+        # 0 - 25 - 50 - 75 - 100
+        itemRange = int(1000/len(items))
 
         while True:
             try:
                 # Read sensor value from potentiometer
                 sensor_value = grovepi.analogRead(potentiometer)
-                setText(items[int(sensor_value/itemRange)])
-                color = int((sensor_value*255)/1022)
-                setRGB(color,color,color)
+                selection = int(sensor_value/itemRange)
+                if selection >= len(items):
+                    selection = len(items) - 1
+                setText(items[selection])
+                colorSelect(selection)
                 
                 if grovepi.digitalRead(button) == 1:
-                    return int(sensor_value/len(items))
+                    return selection
+                
+                time.sleep(0.5)
             except KeyboardInterrupt:
                 grovepi.analogWrite(gled,0)
                 break
             except IOError:
                 print ("Error")
 
+    ############
+    #Returns colors based on index
+    ############ 
+    def colorSelect(x):
+        return {
+            0 : setRGB(255, 255, 255),
+            1 : setRGB(205, 0, 0),
+            2 : setRGB(0, 205, 0),
+            3 : setRGB(0, 0, 205),
+            4 : setRGB(205, 0, 205),
+            5 : setRGB(150, 255, 255),
+            6 : setRGB(255, 178, 102),
+        }.get(x, setRGB(255, 255, 255))
 
         
     ############
