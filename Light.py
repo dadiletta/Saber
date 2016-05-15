@@ -126,19 +126,20 @@ class Saber:
     def colorSelect(self, x):
             if x == 0:
                 setRGB(255, 255, 255)
-            if x == 1:
+            elif x == 1:
                 setRGB(205, 0, 0)
-            if x == 2:
+            elif x == 2:
                 setRGB(0, 205, 0)
-            if x == 3:
+            elif x == 3:
                 setRGB(0, 0, 205)
-            if x == 4:
+            elif x == 4:
                 setRGB(205, 0, 205)
-            if x == 5:
+            elif x == 5:
                 setRGB(150, 255, 255)
-            if x == 6:
+            elif x == 6:
                 setRGB(255, 178, 102)
-        }.get(x, setRGB(255, 255, 255))
+            else:
+                setRGB(100, 0, 200)
 
         
     ############
