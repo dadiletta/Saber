@@ -108,7 +108,7 @@ class Saber:
                 if selection >= len(items):
                     selection = len(items) - 1
                 setText(items[selection])
-                self.colorSelect(str(selection))
+                self.colorSelect(selection)
                 
                 if grovepi.digitalRead(button) == 1:
                     return selection
@@ -124,14 +124,20 @@ class Saber:
     #Returns colors based on index
     ############ 
     def colorSelect(self, x):
-        return {
-            '0' : setRGB(255, 255, 255),
-            '1' : setRGB(205, 0, 0),
-            '2' : setRGB(0, 205, 0),
-            '3' : setRGB(0, 0, 205),
-            '4' : setRGB(205, 0, 205),
-            '5' : setRGB(150, 255, 255),
-            '6' : setRGB(255, 178, 102),
+            if x == 0:
+                setRGB(255, 255, 255)
+            if x == 1:
+                setRGB(205, 0, 0)
+            if x == 2:
+                setRGB(0, 205, 0)
+            if x == 3:
+                setRGB(0, 0, 205)
+            if x == 4:
+                setRGB(205, 0, 205)
+            if x == 5:
+                setRGB(150, 255, 255)
+            if x == 6:
+                setRGB(255, 178, 102)
         }.get(x, setRGB(255, 255, 255))
 
         
