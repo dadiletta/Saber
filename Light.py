@@ -95,52 +95,6 @@ class Saber:
         setRGB(0,255,0)
         setText("Bye bye, this should wrap")
         
-    ############
-    #Menu display and selection
-    ############     
-    def formMenu(self, items):
-        itemRange = int(1000/len(items))
-        while True:
-            try:
-                # Read sensor value from potentiometer
-                sensor_value = grovepi.analogRead(potentiometer)
-                selection = int(sensor_value/itemRange)
-                if selection >= len(items):
-                    selection = len(items) - 1
-                setText(items[selection])
-                self.colorSelect(selection)
-                
-                if grovepi.digitalRead(button) == 1:
-                    return selection
-                
-                time.sleep(0.5)
-            except KeyboardInterrupt:
-                grovepi.analogWrite(gled,0)
-                break
-            except IOError:
-                print ("Error")
-
-    ############
-    #Returns colors based on index
-    ############ 
-    def colorSelect(self, x):
-            if x == 0:
-                setRGB(255, 255, 255)
-            elif x == 1:
-                setRGB(205, 0, 0)
-            elif x == 2:
-                setRGB(0, 205, 0)
-            elif x == 3:
-                setRGB(0, 0, 205)
-            elif x == 4:
-                setRGB(205, 0, 205)
-            elif x == 5:
-                setRGB(150, 255, 255)
-            elif x == 6:
-                setRGB(255, 178, 102)
-            else:
-                setRGB(100, 0, 200)
-
         
     ############
     #Temp demo
@@ -280,6 +234,53 @@ class Saber:
     ######################
     ######################
     
+    ############
+    #Menu display and selection
+    ############     
+    def formMenu(self, items):
+        itemRange = int(1000/len(items))
+        while True:
+            try:
+                # Read sensor value from potentiometer
+                sensor_value = grovepi.analogRead(potentiometer)
+                selection = int(sensor_value/itemRange)
+                if selection >= len(items):
+                    selection = len(items) - 1
+                setText(items[selection])
+                self.colorSelect(selection)
+                
+                if grovepi.digitalRead(button) == 1:
+                    self.clear()
+                    return selection
+                
+                time.sleep(0.5)
+            except KeyboardInterrupt:
+                grovepi.analogWrite(gled,0)
+                break
+            except IOError:
+                print ("Error")
+
+    ############
+    #Returns colors based on index
+    ############ 
+    def colorSelect(self, x):
+            if x == 0:
+                setRGB(255, 255, 255)
+            elif x == 1:
+                setRGB(205, 0, 0)
+            elif x == 2:
+                setRGB(0, 205, 0)
+            elif x == 3:
+                setRGB(0, 0, 205)
+            elif x == 4:
+                setRGB(205, 0, 205)
+            elif x == 5:
+                setRGB(150, 255, 255)
+            elif x == 6:
+                setRGB(255, 178, 102)
+            else:
+                setRGB(100, 0, 200)
+
     
     
     ############
@@ -318,7 +319,10 @@ class Saber:
                 digitalWrite(rled,0)
                 digitalWrite(buzzer,0)
                 break
-        
+
+    ############
+    ## CLEAR
+    ############
     def clear(self):
         digitalWrite(rled,0)
         digitalWrite(buzzer,0)
@@ -326,4 +330,18 @@ class Saber:
         
         setText("")
         setRGB(0,0,0)
+        
+    #############
+    ### RootMenu
+    #############
+    def rootMenu(self):
+        root = {"Function Demos", "Light Settings", "Phone Options"}
+        light = {"All off", "All on", "Work mode", "Movie mode", "Bed chill"}
+        people = {"Dan", "Laura", "MamaMarti", "MamaSusan"}
+        selection = self.formMenu(root)
+        if selection == 1:
+            self.formMenu(light)
+        elif selection == 2:
+            self.formMenu(people)
+            
             
