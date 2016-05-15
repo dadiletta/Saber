@@ -123,7 +123,7 @@ class Saber:
     ############
     #Returns colors based on index
     ############ 
-    def colorSelect(x):
+    def colorSelect(self, x):
         return {
             0 : setRGB(255, 255, 255),
             1 : setRGB(205, 0, 0),
