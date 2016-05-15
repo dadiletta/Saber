@@ -241,6 +241,7 @@ class Saber:
         itemRange = int(1000/len(items))
         while True:
             try:
+                print(items)
                 # Read sensor value from potentiometer
                 sensor_value = grovepi.analogRead(potentiometer)
                 selection = int(sensor_value/itemRange)
