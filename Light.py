@@ -246,7 +246,8 @@ class Saber:
                 selection = int(sensor_value/itemRange)
                 if selection >= len(items):
                     selection = len(items) - 1
-                setText(items[selection])
+                sendText = items[selection]
+                setText(sendText)
                 self.colorSelect(selection)
                 
                 if grovepi.digitalRead(button) == 1:
