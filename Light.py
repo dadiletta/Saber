@@ -338,7 +338,7 @@ class Saber:
         root = {"Function Demos", "Light Settings", "Phone Options"}
         light = {"All off", "All on", "Work mode", "Movie mode", "Bed chill"}
         people = {"Dan", "Laura", "MamaMarti", "MamaSusan"}
-        selection = self.formMenu(root)
+        choice = self.formMenu(root)
         if selection == 1:
             self.formMenu(light)
         elif selection == 2:
