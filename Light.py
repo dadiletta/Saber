@@ -247,8 +247,7 @@ class Saber:
                 selection = int(sensor_value/itemRange)
                 if selection >= len(items):
                     selection = len(items) - 1
-                sendText = items[selection]
-                setText(sendText)
+                setText(items[selection])
                 self.colorSelect(selection)
                 
                 if grovepi.digitalRead(button) == 1:
@@ -337,9 +336,9 @@ class Saber:
     ### RootMenu
     #############
     def rootMenu(self):
-        root = {"Function Demos", "Light Settings", "Phone Options"}
-        light = {"All off", "All on", "Work mode", "Movie mode", "Bed chill"}
-        people = {"Dan", "Laura", "MamaMarti", "MamaSusan"}
+        root = ["Function Demos", "Light Settings", "Phone Options"]
+        light = ["All off", "All on", "Work mode", "Movie mode", "Bed chill"]
+        people = ["Dan", "Laura", "MamaMarti", "MamaSusan"]
         choice = self.formMenu(root)
         if selection == 1:
             self.formMenu(light)
