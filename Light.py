@@ -28,7 +28,8 @@ import time
 import requests
 import Private
 import random
-import Tkinter as tk  #Import Tkinter
+from tkinter import *
+from tkinter import ttk
 
 
 # Configure buzzer on D4
@@ -69,10 +70,28 @@ MAKER_SECRET = Private.Private.MAKER_SECRET
 ##WELCOME TO SABER CLASS
 ########################
 class Saber:
+    
+    root = Tk()
+    root.title("TheLanceVote")
+
 
     def __init__(self):
         print "Saber instantiated."
+        
 
+    
+    ######################
+    ######################
+    ### GUI
+    ######################
+    ######################  
+    
+    def calculate(*args):
+        try:
+            value = float(feet.get())
+            meters.set((0.3048 * value * 10000.0 + 0.5)/10000.0)
+        except ValueError:
+            pass
     
     ######################
     ######################
@@ -287,13 +306,33 @@ class Saber:
     #Launch GUI
     ############ 
     def launchGUI(self):
-        root = tk.Tk()                      #Bind Tkinter to the root object
-        root.geometry("320x240")            #Set the window dimensions
-        #root.bind('<KeyPress>', onKeyPress) #For example, bind the onKeyPress method (you must create it), and have some code 
-                                            #done when key is pressed
-        root.mainloop()                     #Starts the Tkinter and onKeyPress event
-    
-    
+        root = Tk()
+        root.title("Feet to Meters")
+        
+        mainframe = ttk.Frame(root, padding="3 3 12 12")
+        mainframe.grid(column=0, row=0, sticky=(N, W, E, S))
+        mainframe.columnconfigure(0, weight=1)
+        mainframe.rowconfigure(0, weight=1)
+        
+        feet = StringVar()
+        meters = StringVar()
+        
+        feet_entry = ttk.Entry(mainframe, width=7, textvariable=feet)
+        feet_entry.grid(column=2, row=1, sticky=(W, E))
+        
+        ttk.Label(mainframe, textvariable=meters).grid(column=2, row=2, sticky=(W, E))
+        ttk.Button(mainframe, text="Calculate", command=calculate).grid(column=3, row=3, sticky=W)
+        
+        ttk.Label(mainframe, text="feet").grid(column=3, row=1, sticky=W)
+        ttk.Label(mainframe, text="is equivalent to").grid(column=1, row=2, sticky=E)
+        ttk.Label(mainframe, text="meters").grid(column=3, row=2, sticky=W)
+        
+        for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
+        
+        feet_entry.focus()
+        root.bind('<Return>', calculate)
+        
+        root.mainloop()
     ############
     #Sensor in box checks if something (box's lid) is right 
     #Above. Triggers alarm if opened. Button disables
