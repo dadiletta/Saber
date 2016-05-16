@@ -28,7 +28,8 @@ import time
 import requests
 import Private
 import random
-
+import SaberGUI
+import Tkinter as tk  #Import Tkinter
 
 
 # Configure buzzer on D4
@@ -132,6 +133,7 @@ class Saber:
                 break
             except IOError:
                 print ("Error")
+
 
     ############
     #Button demo
@@ -241,10 +243,10 @@ class Saber:
         itemRange = int(1000/len(items))
         while True:
             try:
-                print(items)
                 # Read sensor value from potentiometer
                 sensor_value = grovepi.analogRead(potentiometer)
                 selection = int(sensor_value/itemRange)
+                # check to make sure that our index value isn't going over
                 if selection >= len(items):
                     selection = len(items) - 1
                 setText(list(items[selection]))
@@ -282,6 +284,15 @@ class Saber:
             else:
                 setRGB(100, 0, 200)
 
+    ############
+    #Launch GUI
+    ############ 
+    def launchGUI(self):
+        root = tk.Tk()                      #Bind Tkinter to the root object
+        root.geometry("320x240")            #Set the window dimensions
+        #root.bind('<KeyPress>', onKeyPress) #For example, bind the onKeyPress method (you must create it), and have some code 
+                                            #done when key is pressed
+        root.mainloop()                     #Starts the Tkinter and onKeyPress event
     
     
     ############
