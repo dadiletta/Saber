@@ -28,7 +28,6 @@ import time
 import requests
 import Private
 import random
-import SaberGUI
 import Tkinter as tk  #Import Tkinter
 
 
