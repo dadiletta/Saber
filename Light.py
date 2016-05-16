@@ -20,7 +20,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 '''
 
-
+from tkinter import *
+from tkinter import ttk
 from grovepi import *
 from grove_rgb_lcd import *
 import grovepi
@@ -28,8 +29,7 @@ import time
 import requests
 import Private
 import random
-from tkinter import *
-from tkinter import ttk
+
 
 
 # Configure buzzer on D4
