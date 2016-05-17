@@ -19,9 +19,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 '''
-import tkinter
-from tkinter import *
-from tkinter import ttk
+
 from grovepi import *
 from grove_rgb_lcd import *
 import grovepi
@@ -29,7 +27,7 @@ import time
 import requests
 import Private
 import random
-
+import tkinter
 
 
 # Configure buzzer on D4
