@@ -39,6 +39,8 @@ while True:
         print(sab.formMenu(exampleMenu)+1)
     elif command =="nav":
         sab.rootMenu()
+    elif command =="gui":
+        sab.launchGUI()
 
     ##Need Ctrl+C protection on all methods
 
