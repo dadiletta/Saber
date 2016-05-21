@@ -37,10 +37,10 @@ class StartPage(tk.Frame):
         label = tk.Label(self, text="Welcome to Saber", font=LARGE_FONT)
         label.pack(pady=10,padx=10)
 
-        button1 = tk.Button(self, text="Lights", command = lamda: controller.show_frame(PageOne))
+        button1 = tk.Button(self, text="Lights", command=lambda: controller.show_frame(PageOne))
         button1.pack()
 
-class PageOne(tk.Frame)
+class PageOne(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
@@ -48,7 +48,7 @@ class PageOne(tk.Frame)
         label = tk.Label(self, text="Welcome to Saber", font=LARGE_FONT)
         label.pack(pady=10,padx=10)
         
-        button1 = tk.Button(self, text="Back to Main", command = lamda: controller.show_frame(StartPage)
+        button1 = tk.Button(self, text="Back to Main", command=lambda: controller.show_frame(StartPage)
         button1.pack()
         
 app = TkWork()
