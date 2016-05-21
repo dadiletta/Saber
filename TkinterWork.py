@@ -48,8 +48,9 @@ class PageOne(tk.Frame):
         label = tk.Label(self, text="Welcome to Saber", font=LARGE_FONT)
         label.pack(pady=10,padx=10)
         
-        button1 = tk.Button(self, text="Back to Main", command=lambda: controller.show_frame(StartPage)
+        button1 = tk.Button(self, text="Back to Main", command=lambda: controller.show_frame(StartPage))
         button1.pack()
+        
         
 app = TkWork()
 app.mainloop()
