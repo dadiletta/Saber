@@ -3,7 +3,7 @@ import tkinter as tk
 LARGE_FONT = ("Verdana", 12)
 
 
-class TkWork(tk.Tk):
+class TkinterWork(tk.Tk):
 
     def __init__(self, *args, **kwargs):
 
@@ -52,6 +52,6 @@ class PageOne(tk.Frame):
         button1.pack()
         
         
-app = TkWork()
+app = TkinterWork()
 app.mainloop()
 
