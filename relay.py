@@ -26,7 +26,7 @@ SleepTimeL = 15
 count = 0
 
 
-def msg(self, message):
+def msg(message):
     r = random.randint(0,256)
     g = random.randint(0,256)
     b = random.randint(0,256)
