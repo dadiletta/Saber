@@ -26,15 +26,19 @@ try:
   while True:
     result = bluetooth.lookup_name('08:ec:a9:0f:88:3e', timeout=5)
     if(result != None):
-        print "I see Mr. A!"
-        GPIO.output(pinList[0], GPIO.HIGH)
+        print "I see Mr. A! Lights on, boys!"
+        GPIO.output(pinList[0], GPIO.LOW)
         print str(pinList[0]) + " set to high"
         count = 0
     else:
         #we see the bluetooth missing once
+
         count += 1;
         if count > 1:
-            GPIO.output(pinList[0], GPIO.LOW)
+            GPIO.output(pinList[0], GPIO.HIGH)
+            print "Cutting power until you return."
+        else:
+            print "Mr. A? Where did you go?"
     #break between cycles
     time.sleep(SleepTimeL)
 
