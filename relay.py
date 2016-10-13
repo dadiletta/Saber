@@ -21,13 +21,14 @@ SleepTimeL = 2
 # main loop
 
 try:
-  for x in pinList:
-    GPIO.output(x, GPIO.LOW)
-    print str(x) + "set to low"
-    time.sleep(SleepTimeL);
-    GPIO.output(x, GPIO.HIGH)
-    print str(x) + "set to high"
-    time.sleep(SleepTimeL);
+  while True:
+      for x in pinList:
+        GPIO.output(x, GPIO.LOW)
+        print str(x) + " set to low"
+        time.sleep(SleepTimeL);
+        GPIO.output(x, GPIO.HIGH)
+        print str(x) + " set to high"
+        time.sleep(SleepTimeL);
 
   GPIO.cleanup()
   print "Good bye!"
