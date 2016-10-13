@@ -1,6 +1,7 @@
 #!/usr/bin/python
 import RPi.GPIO as GPIO
 import time
+import bluetooth
 
 GPIO.setmode(GPIO.BCM)
 
@@ -22,6 +23,9 @@ SleepTimeL = 2
 
 try:
   while True:
+      result = bluetooth.lookup_name('08:ec:a9:0f:88:3e', timeout=5)
+      if(result != None):
+          print "I see Dan!"
       for x in pinList:
         GPIO.output(x, GPIO.LOW)
         print str(x) + " set to low"
