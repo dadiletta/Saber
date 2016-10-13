@@ -34,7 +34,7 @@ try:
         #we see the bluetooth missing once
         count += 1;
         if count > 1:
-        GPIO.output(pinList[0], GPIO.LOW)
+            GPIO.output(pinList[0], GPIO.LOW)
     #break between cycles
     time.sleep(SleepTimeL)
 
