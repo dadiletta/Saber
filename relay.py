@@ -25,7 +25,7 @@ SleepTimeL = 15
 #counter to double check bluetooth before cutting power
 count = 0
 
-
+#display a string on the LCD with a random color
 def msg(message):
     r = random.randint(0,256)
     g = random.randint(0,256)
@@ -41,14 +41,15 @@ try:
     if(result != None):
         msg("Hello Mr. A\nNice to see you.")
         print "I see Mr. A! Lights on, boys!"
-        GPIO.output(pinList[0], GPIO.LOW)
+        GPIO.output(pinList[0], GPIO.HIGH)
         print str(pinList[0]) + " set to high"
         count = 0
     else:
         #we see the bluetooth missing once
         count += 1;
         if count > 1:
-            GPIO.output(pinList[0], GPIO.HIGH)
+            GPIO.output(pinList[0], GPIO.LOW)
+
             print "No signal, no power."
             msg("No signal, no power.")
         else:
